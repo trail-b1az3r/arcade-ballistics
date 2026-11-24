@@ -6,23 +6,27 @@
 /**
  * Built-in ammunition presets. Mass is a gameplay mass value, not kilograms.
  */
-//% blockNamespace="ballistics"
-export enum Ammunition {
-    //% block="light"
-    Light,
-    //% block="standard"
-    Standard,
-    //% block="heavy"
-    Heavy,
-    //% block="precision"
-    Precision
-}
+
 
 namespace ballistics {
     let currentWindX = 0
     let lastAngle = 0
     let lastFlightTime = 0
-
+    
+    /**
+ * Built-in ammunition presets. Mass is a gameplay mass value, not kilograms.
+ */
+    //% blockNamespace="ballistics"
+    export enum Ammunition {
+        //% block="light"
+        Light,
+        //% block="standard"
+        Standard,
+        //% block="heavy"
+        Heavy,
+        //% block="precision"
+        Precision
+    }
     let trackedTargets: Sprite[] = []
     let targetMinX: number[] = []
     let targetMaxX: number[] = []
@@ -149,7 +153,6 @@ namespace ballistics {
     // Bounce registered moving targets against their configured rectangle.
     game.onUpdateInterval(20, function () {
         for (let i = trackedTargets.length - 1; i >= 0; i--) {
-            const target = trackedTargets[i]
             const target = trackedTargets[i]
             if (target) {
                 if (target.x < targetMinX[i]) {
